@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: MRE oapi-codegen duplicate types
+  description: Minimal reproducible example for a bug in https://github.com/deepmap/oapi-codegen/ generating duplicate types. https://github.com/deepmap/oapi-codegen/issues/899
+  version: 0.0.0
+paths:
+  /test:
+    get:
+      operationId: test
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TestResponse"
+components:
+  schemas:
+    TestResponse:
+      type: object
+      properties:
+        test:
+          type: string
